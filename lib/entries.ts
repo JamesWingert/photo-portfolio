@@ -15,10 +15,10 @@ export interface Entry {
 // Placeholder entries for initial build
 export function getEntries(): Entry[] {
   return [
-    // REAL ENTRY - Your Lunar New Year photos (NEEDS YOUR REVIEW)
+    // REAL ENTRY - Your Lunar New Year photos
     {
       id: "entry-1772581115877-0",
-      title: "[REVIEW NEEDED] Lunar New Year 2026",
+      title: "Chinatown Celebrates Lunar New Year",
       date: "March 2026",
       photos: [
         { src: "/photos/lunar-new-year-26/DSCF0533-Topaz-Gigapixel-2X.jpg", alt: "Lunar New Year 1" },
@@ -26,7 +26,7 @@ export function getEntries(): Entry[] {
         { src: "/photos/lunar-new-year-26/DSCF1193 2.jpg", alt: "Lunar New Year 3" },
         { src: "/photos/lunar-new-year-26/DSCF1259-Topaz-Gigapixel-2X 2.jpg", alt: "Lunar New Year 4" },
       ],
-      summary: "[REVIEW NEEDED - Please provide a description or I'll generate one for your approval]",
+      summary: "Lunar New Year celebrations in Manhattan's Chinatown. A study of color, tradition, and community gathering as the city welcomes the new year.",
       accentColor: "#E8D5C4",
     },
     // Placeholder entries
