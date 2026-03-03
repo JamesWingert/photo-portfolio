@@ -10,10 +10,29 @@ if (!fs.existsSync(ENTRIES_DIR)) {
   fs.mkdirSync(ENTRIES_DIR, { recursive: true });
 }
 
-// Get all photos
-const photos = fs.readdirSync(PHOTOS_DIR)
-  .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f))
-  .sort();
+// Get all photos (including subdirectories)
+function getAllPhotos(dir, baseDir = dir) {
+  let photos = [];
+  const items = fs.readdirSync(dir);
+  
+  for (const item of items) {
+    const fullPath = path.join(dir, item);
+    const stat = fs.statSync(fullPath);
+    
+    if (stat.isDirectory()) {
+      // Recursively search subdirectories
+      photos = photos.concat(getAllPhotos(fullPath, baseDir));
+    } else if (/\.(jpg|jpeg|png|webp)$/i.test(item)) {
+      // Get relative path from base photos directory
+      const relativePath = path.relative(baseDir, fullPath);
+      photos.push(relativePath);
+    }
+  }
+  
+  return photos;
+}
+
+const photos = getAllPhotos(PHOTOS_DIR).sort();
 
 console.log(`Found ${photos.length} photos`);
 
@@ -25,19 +44,23 @@ for (let i = 0; i < photos.length; i += 4) {
 
 console.log(`Creating ${batches.length} entries`);
 
-// Generate entries (placeholder - would use AI in production)
+// Generate entries
 batches.forEach((batch, index) => {
   const entryId = `entry-${Date.now()}-${index}`;
+  const folderName = path.dirname(batch[0]); // Get folder name from first photo path
   
   // In production, this would call AI API
-  // For now, create placeholder entry
+  // For now, I'll generate titles for you to review
   const entry = {
     id: entryId,
-    title: `[AI Generated Title ${index + 1}]`,
+    title: `[REVIEW NEEDED] Entry ${index + 1}${folderName ? ` (${folderName})` : ''}`,
     date: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
-    photos: batch.map(p => ({ src: `/photos/${p}`, alt: p })),
-    summary: `[AI Generated Summary - This would be a poetic description of the photos, the mood, the lighting, and the story behind them.]`,
-    accentColor: "#E8D5C4", // Would extract from image
+    photos: batch.map(p => ({ 
+      src: `/photos/${p.replace(/\\/g, '/')}`, 
+      alt: path.basename(p) 
+    })),
+    summary: `[REVIEW NEEDED - This would be a poetic description of the photos. Please review and edit.]`,
+    accentColor: "#E8D5C4",
   };
 
   // Save entry JSON
@@ -46,7 +69,7 @@ batches.forEach((batch, index) => {
     JSON.stringify(entry, null, 2)
   );
 
-  console.log(`Generated entry: ${entryId}`);
+  console.log(`Generated entry: ${entryId} with ${batch.length} photos`);
 });
 
 console.log('Done! In production, this would use AI to generate titles and summaries.');
