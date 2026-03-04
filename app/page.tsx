@@ -68,8 +68,8 @@ export default function Home() {
       {showTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-50 w-9 h-9 flex items-center justify-center rounded-full cursor-pointer transition-opacity duration-300 hover:opacity-70"
-          style={{ background: "var(--fg)", color: "var(--card-bg)" }}
+          className="fixed z-50 w-9 h-9 flex items-center justify-center rounded-full cursor-pointer transition-opacity duration-300 hover:opacity-70"
+          style={{ background: "var(--fg)", color: "var(--card-bg)", bottom: "calc(var(--frame-inset) + 12px)", right: "calc(var(--frame-inset) + 12px)" }}
           aria-label="Scroll to top"
         >
           ↑
