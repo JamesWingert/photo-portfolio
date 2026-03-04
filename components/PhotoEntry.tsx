@@ -47,32 +47,26 @@ export function PhotoEntry({ entry }: PhotoEntryProps) {
         <span>{entry.title}</span>
       </div>
 
-      {/* Main content: 2 photos + text panel */}
-      <div className="grid grid-cols-[1fr_1fr_1fr] gap-[6px] px-5 pb-10">
-        {/* Photo 1 */}
-        <div className="relative aspect-square overflow-hidden bg-[#e8e4e0]">
-          {entry.photos[0] && (
-            <Image
-              src={entry.photos[0].src}
-              alt={entry.photos[0].alt || entry.title}
-              fill
-              className="object-cover"
-              sizes="33vw"
-            />
-          )}
-        </div>
-
-        {/* Photo 2 */}
-        <div className="relative aspect-square overflow-hidden bg-[#e8e4e0]">
-          {entry.photos[1] && (
-            <Image
-              src={entry.photos[1].src}
-              alt={entry.photos[1].alt || entry.title}
-              fill
-              className="object-cover"
-              sizes="33vw"
-            />
-          )}
+      {/* Main content: 2x2 photo grid (left 2/3) + text panel (right 1/3) */}
+      <div className="grid grid-cols-[2fr_1fr] gap-[6px] px-5 pb-10">
+        {/* 2x2 photo grid */}
+        <div className="grid grid-cols-2 gap-[6px]">
+          {entry.photos.slice(0, 4).map((photo, index) => (
+            <div
+              key={index}
+              className="relative aspect-square overflow-hidden bg-[#e8e4e0]"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt || entry.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 50vw, 33vw"
+                quality={75}
+                loading="lazy"
+              />
+            </div>
+          ))}
         </div>
 
         {/* Text panel */}
