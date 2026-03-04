@@ -4,9 +4,9 @@ export function FooterCard() {
   const entries = getEntries();
 
   return (
-    <section className="snap-section !items-end md:!items-center" style={{ background: "var(--bg)" }}>
-      <div className="w-full max-w-[900px] px-8 py-16 md:py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section className="snap-section" style={{ background: "var(--bg)" }}>
+      <div className="w-full max-w-[900px] px-10 md:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* Column 1 — Info */}
           <div className="space-y-4">
             <p className="text-[14px] font-medium tracking-wide uppercase">Jimmy Wingert</p>
