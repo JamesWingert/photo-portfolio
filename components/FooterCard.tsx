@@ -5,7 +5,7 @@ export function FooterCard() {
 
   return (
     <section className="snap-section" style={{ background: "var(--bg)" }}>
-      <div className="w-full max-w-[900px] px-10 md:px-8 py-12">
+      <div className="w-full max-w-[900px] mx-auto px-[calc(var(--frame-inset)+16px)] py-12 text-center md:text-left">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* Column 1 — Info */}
           <div className="space-y-4">
