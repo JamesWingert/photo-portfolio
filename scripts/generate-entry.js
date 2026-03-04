@@ -121,6 +121,22 @@ for (const folder of folders) {
 
 console.log(`Found ${folders.length} folders, ${entries.length} entries, ${entries.reduce((n, e) => n + e.photos.length, 0)} photos total`);
 
+// Sort entries by date, most recent first
+const MONTH_ORDER = {
+  january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
+  july: 6, august: 7, september: 8, october: 9, november: 10, december: 11,
+};
+
+function parseDateValue(dateStr) {
+  // "March 2026" → sortable number (2026 * 12 + 2)
+  const parts = dateStr.toLowerCase().split(/\s+/);
+  const month = MONTH_ORDER[parts[0]] ?? 0;
+  const year = parseInt(parts[1]) || 0;
+  return year * 12 + month;
+}
+
+entries.sort((a, b) => parseDateValue(b.date) - parseDateValue(a.date));
+
 // Generate lib/entries.ts
 const photosType = (photos) => photos.map(p => {
   const fields = [
