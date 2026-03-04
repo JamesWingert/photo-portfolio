@@ -6,8 +6,11 @@ export interface Photo {
 export interface Entry {
   id: string;
   title: string;
+  shortTitle?: string;
   date: string;
   photos: Photo[];
+  summary?: string;
+  tags?: string[];
 }
 
 export function getEntries(): Entry[] {
@@ -22,6 +25,8 @@ export function getEntries(): Entry[] {
         { src: "/photos/lunar-new-year-26/DSCF1193 2.jpg", alt: "Lunar New Year 3" },
         { src: "/photos/lunar-new-year-26/DSCF1259-Topaz-Gigapixel-2X 2.jpg", alt: "Lunar New Year 4" },
       ],
+      summary: "Lunar New Year celebrations in Manhattan's Chinatown. A study of color, tradition, and community gathering as the city welcomes the new year.",
+      tags: ["Street Photography", "Chinatown", "Lunar New Year", "Fuji X-M5", "Manhattan", "Community"],
     },
     {
       id: "entry-1",
@@ -33,6 +38,8 @@ export function getEntries(): Entry[] {
         { src: "/photos/placeholder-3.svg", alt: "Window light study 3" },
         { src: "/photos/placeholder-4.svg", alt: "Window light study 4" },
       ],
+      summary: "A series exploring how natural light transforms ordinary spaces throughout the day. Shot on Fuji X-M5.",
+      tags: ["Natural Light", "Interior", "Fuji X-M5", "Golden Hour", "Apartment", "Study"],
     },
     {
       id: "entry-2",
@@ -44,6 +51,8 @@ export function getEntries(): Entry[] {
         { src: "/photos/placeholder-7.svg", alt: "Chinatown morning 3" },
         { src: "/photos/placeholder-8.svg", alt: "Chinatown morning 4" },
       ],
+      summary: "Quiet moments in Manhattan's Chinatown before the streets fill with activity.",
+      tags: ["Street Photography", "Chinatown", "Morning", "Manhattan", "Quiet", "Urban"],
     },
   ];
 }
