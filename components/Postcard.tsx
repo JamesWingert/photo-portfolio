@@ -55,17 +55,19 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
         </div>
 
         {/* Right side — postcard details */}
-        <div className="flex-1 h-full flex flex-col justify-between p-5">
-          {/* Top: "EXAMPLE CONTENT" label + stamp */}
-          <div className="flex justify-between items-start">
-            <span className="text-[8px] tracking-[0.12em] uppercase" style={{ color: "var(--muted)" }}>
-              {photo.entryTitle}
-            </span>
-            <div className="w-10 h-12 border flex-shrink-0" style={{ borderColor: "#ccc" }} />
+        <div className="flex-1 h-full flex flex-col p-5 relative">
+          {/* Stamp — top right with proper inset */}
+          <div className="flex justify-end">
+            <div className="w-10 h-12 border" style={{ borderColor: "#ccc" }} />
           </div>
 
-          {/* Bottom: address lines with handwritten text */}
-          <div className="space-y-0">
+          {/* Series label — below stamp */}
+          <span className="text-[8px] tracking-[0.12em] uppercase mt-2" style={{ color: "var(--muted)" }}>
+            {photo.entryTitle}
+          </span>
+
+          {/* Centered address lines */}
+          <div className="flex-1 flex flex-col justify-center">
             {/* Line 1 — handwritten location */}
             <div className="relative py-2 border-b" style={{ borderColor: "#ccc" }}>
               <span className="font-[family-name:var(--font-handwriting)] text-[20px] leading-none" style={{ color: "var(--fg)" }}>
@@ -82,11 +84,12 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
             <div className="py-2 border-b" style={{ borderColor: "#ccc" }} />
             {/* Line 4 — empty */}
             <div className="py-2 border-b" style={{ borderColor: "#ccc" }} />
-
-            <p className="text-[9px] tracking-wide mt-2" style={{ color: "var(--muted)" }}>
-              {number} / {total}
-            </p>
           </div>
+
+          {/* Counter at bottom */}
+          <p className="text-[9px] tracking-wide mt-2" style={{ color: "var(--muted)" }}>
+            {number} / {total}
+          </p>
         </div>
       </div>
     </section>
