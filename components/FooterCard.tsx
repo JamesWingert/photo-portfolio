@@ -1,4 +1,8 @@
+import { getEntries } from "@/lib/entries";
+
 export function FooterCard() {
+  const entries = getEntries();
+
   return (
     <section className="snap-section !items-end md:!items-center" style={{ background: "var(--bg)" }}>
       <div className="w-full max-w-[900px] px-8 py-16 md:py-12">
@@ -37,12 +41,12 @@ export function FooterCard() {
           <div className="space-y-3 md:text-right">
             <p className="text-[12px] font-medium uppercase tracking-wide">Series</p>
             <div className="text-[12px] leading-relaxed italic space-y-1" style={{ color: "var(--muted)" }}>
-              <p>Chinatown Celebrates Lunar New Year</p>
-              <p>2026</p>
-              <p className="pt-2">Late Afternoon Light</p>
-              <p>2024</p>
-              <p className="pt-2">Chinatown Mornings</p>
-              <p>2024</p>
+              {entries.map((entry, i) => (
+                <div key={entry.id} className={i > 0 ? "pt-2" : ""}>
+                  <p>{entry.title}</p>
+                  <p>{entry.date}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

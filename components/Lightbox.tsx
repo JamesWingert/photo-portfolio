@@ -42,13 +42,11 @@ export function Lightbox({ photos, currentIndex, onClose, onChange }: LightboxPr
     <div
       className="fixed inset-0 z-50 flex items-center justify-center"
       style={{ background: "rgba(0,0,0,0.92)" }}
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
-      }}
+      onClick={onClose}
     >
       {/* Close button */}
       <button
-        onClick={onClose}
+        onClick={(e) => { e.stopPropagation(); onClose(); }}
         className="absolute top-5 right-6 text-white/70 hover:text-white text-[14px] tracking-wide z-10 cursor-pointer transition-colors"
         aria-label="Close lightbox"
       >
@@ -69,7 +67,7 @@ export function Lightbox({ photos, currentIndex, onClose, onChange }: LightboxPr
       {/* Prev */}
       {hasPrev && (
         <button
-          onClick={goPrev}
+          onClick={(e) => { e.stopPropagation(); goPrev(); }}
           className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white text-3xl z-10 cursor-pointer transition-colors px-2 py-8"
           aria-label="Previous photo"
         >
@@ -80,7 +78,7 @@ export function Lightbox({ photos, currentIndex, onClose, onChange }: LightboxPr
       {/* Next */}
       {hasNext && (
         <button
-          onClick={goNext}
+          onClick={(e) => { e.stopPropagation(); goNext(); }}
           className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 hover:text-white text-3xl z-10 cursor-pointer transition-colors px-2 py-8"
           aria-label="Next photo"
         >
