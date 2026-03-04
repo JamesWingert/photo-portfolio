@@ -53,7 +53,7 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
         </div>
 
         {/* Right side / Bottom — postcard details */}
-        <div className="md:flex-1 flex flex-col items-center relative px-5 py-4 md:px-6 md:py-0 md:justify-center">
+        <div className="flex-1 flex flex-col justify-center items-center relative px-5 py-4 md:px-6 md:py-0">
           {/* Top row on mobile: series label + stamp side by side; absolute on desktop */}
           <div className="flex w-full justify-between items-start md:contents mb-3 md:mb-0">
             <span
