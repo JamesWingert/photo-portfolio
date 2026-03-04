@@ -4,8 +4,7 @@
 
 export const stampPools: Record<string, string[]> = {
   nyc: [
-    "/stamps/nyc/stamp-1.png",
-    // Add more: "/stamps/nyc/stamp-2.png", etc.
+    "/stamps/nyc/stamp1.jpg",
   ],
   // Add more locations:
   // brooklyn: ["/stamps/brooklyn/stamp-1.png"],
