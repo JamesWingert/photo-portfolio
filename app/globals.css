@@ -10,6 +10,12 @@
   --frame-inset: 3vw;
 }
 
+@media (max-width: 768px) {
+  :root {
+    --frame-inset: 2vw;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

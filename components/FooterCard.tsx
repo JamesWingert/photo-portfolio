@@ -1,7 +1,7 @@
 export function FooterCard() {
   return (
     <section className="snap-section" style={{ background: "var(--bg)" }}>
-      <div className="grid grid-cols-3 gap-8 w-full max-w-[900px] px-8 py-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[900px] px-8 py-12">
         {/* Column 1 — Info */}
         <div className="space-y-4">
           <p className="text-[14px] font-medium tracking-wide uppercase">Jimmy Wingert</p>
@@ -33,7 +33,7 @@ export function FooterCard() {
         </div>
 
         {/* Column 3 — Series */}
-        <div className="space-y-3 text-right">
+        <div className="space-y-3 md:text-right">
           <p className="text-[12px] font-medium uppercase tracking-wide">Series</p>
           <div className="text-[12px] leading-relaxed italic space-y-1" style={{ color: "var(--muted)" }}>
             <p>Chinatown Celebrates Lunar New Year</p>
@@ -46,7 +46,6 @@ export function FooterCard() {
         </div>
       </div>
 
-      {/* Bottom link */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="absolute bottom-6 left-0 right-0 text-center text-[13px] tracking-wide cursor-pointer hover:opacity-70 transition-opacity"
