@@ -20,13 +20,13 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
         style={{
           background: "var(--card-bg)",
           width: "min(90vw, 1000px)",
+          aspectRatio: undefined,
         }}
       >
         {/* Photo */}
         <button
           onClick={onPhotoClick}
-          className="relative cursor-zoom-in overflow-hidden group w-full md:w-[55%] aspect-[4/3] md:aspect-auto md:h-auto"
-          style={{ minHeight: "200px" }}
+          className="relative cursor-zoom-in overflow-hidden group w-full md:w-[55%] aspect-[4/3] md:aspect-[3/2]"
           aria-label={`View ${photo.title || photo.alt} full size`}
         >
           <Image
@@ -54,7 +54,7 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
         </div>
 
         {/* Right side / Bottom — postcard details */}
-        <div className="flex-1 flex flex-col justify-center items-center relative px-5 py-6 md:px-6 md:py-0" style={{ minHeight: "180px" }}>
+        <div className="flex-1 flex flex-col justify-center items-center relative px-5 py-6 md:px-6 md:py-0">
           {/* Stamp — top right */}
           <div className="absolute top-3 right-3 md:top-4 md:right-4">
             {stamp ? (
