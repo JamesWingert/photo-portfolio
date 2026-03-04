@@ -64,24 +64,29 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
               {photo.location} — {photo.date} — Jimmy Wingert
             </div>
 
-            {/* Address lines area */}
-            <div className="mt-auto space-y-3 pl-8">
-              {photo.title && (
-                <p className="text-[13px] font-medium" style={{ color: "var(--fg)" }}>
-                  {photo.title}
-                </p>
-              )}
-              {photo.description && (
-                <p className="text-[11px] leading-relaxed" style={{ color: "var(--muted)" }}>
-                  {photo.description}
-                </p>
-              )}
-              <div className="space-y-2 pt-2">
+            {/* Address lines area with handwritten note */}
+            <div className="mt-auto pl-8">
+              {/* Handwritten location & note */}
+              <div className="font-[family-name:var(--font-handwriting)] mb-1">
+                {photo.location && (
+                  <p className="text-[22px] leading-snug" style={{ color: "var(--fg)" }}>
+                    {photo.location}
+                  </p>
+                )}
+                {photo.title && (
+                  <p className="text-[18px] leading-snug" style={{ color: "var(--fg)", opacity: 0.7 }}>
+                    {photo.title} — {photo.date}
+                  </p>
+                )}
+              </div>
+
+              {/* Address lines underneath */}
+              <div className="space-y-2 pt-3">
                 <hr style={{ borderColor: "#ccc" }} />
                 <hr style={{ borderColor: "#ccc" }} />
                 <hr style={{ borderColor: "#ccc" }} />
               </div>
-              <p className="text-[10px] tracking-wide" style={{ color: "var(--muted)" }}>
+              <p className="text-[10px] tracking-wide mt-2" style={{ color: "var(--muted)" }}>
                 {number} / {total}
               </p>
             </div>
