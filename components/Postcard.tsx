@@ -58,7 +58,7 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
           <div className="absolute top-4 right-4">
             {stamp ? (
               <div
-                className="w-12 h-14 overflow-visible relative"
+                className="w-16 h-20 overflow-visible relative"
                 style={{
                   transform: `rotate(${stamp.rotation}deg) translate(${stamp.offsetX}px, ${stamp.offsetY}px)`,
                 }}
