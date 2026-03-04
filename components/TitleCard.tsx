@@ -13,7 +13,7 @@ export function TitleCard({ totalPhotos }: TitleCardProps) {
           {totalPhotos} Postcards
         </h2>
         <h3 className="text-[clamp(1.2rem,5vw,4rem)] font-black leading-[1] tracking-tight uppercase text-center mt-1">
-          2024–2026
+          2025–2026
         </h3>
 
         <div className="w-48 mt-6">
