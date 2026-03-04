@@ -11,85 +11,81 @@ interface PostcardProps {
 export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) {
   return (
     <section className="snap-section" style={{ background: "var(--bg)" }}>
-      {/* Site name — top center */}
-      <p className="absolute top-6 left-0 right-0 text-center text-[13px] tracking-wide" style={{ color: "var(--muted)" }}>
-        Jimmy Wingert
-      </p>
-
-      {/* Outer frame with dashed border */}
+      {/* White postcard — bigger, fills more of the viewport */}
       <div
-        className="relative w-[90vw] max-w-[1100px] aspect-[16/10] border-2 rounded-sm overflow-hidden"
-        style={{ borderColor: "var(--border)", background: "var(--bg)" }}
+        className="relative flex"
+        style={{
+          background: "var(--card-bg)",
+          width: "min(80vw, 1000px)",
+          aspectRatio: "3 / 2",
+        }}
       >
-        {/* Inner white postcard */}
-        <div
-          className="absolute inset-[6%] flex"
-          style={{ background: "var(--card-bg)" }}
+        {/* Left side — photo (takes ~55% for more image) */}
+        <button
+          onClick={onPhotoClick}
+          className="relative h-full cursor-zoom-in overflow-hidden group"
+          style={{ width: "55%" }}
+          aria-label={`View ${photo.title || photo.alt} full size`}
         >
-          {/* Left side — photo */}
-          <button
-            onClick={onPhotoClick}
-            className="relative w-1/2 h-full cursor-zoom-in overflow-hidden group"
-            aria-label={`View ${photo.title || photo.alt} full size`}
+          <Image
+            src={photo.src}
+            alt={photo.alt || ""}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            sizes="(max-width: 768px) 80vw, 44vw"
+            quality={80}
+          />
+          {/* Number overlay */}
+          <span className="absolute bottom-3 left-4 text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none text-blue-800 opacity-80 mix-blend-multiply">
+            {number}
+          </span>
+        </button>
+
+        {/* Vertical divider — right next to the photo */}
+        <div className="w-px self-stretch" style={{ background: "#ccc" }} />
+
+        {/* Rotated metadata text — tight to the divider */}
+        <div className="relative" style={{ width: "20px" }}>
+          <span
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[8px] tracking-[0.12em] uppercase"
+            style={{ color: "var(--muted)" }}
           >
-            <Image
-              src={photo.src}
-              alt={photo.alt || ""}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-              sizes="(max-width: 768px) 80vw, 40vw"
-              quality={80}
-            />
-            {/* Number overlay */}
-            <span className="absolute bottom-4 left-5 text-[clamp(3rem,6vw,5rem)] font-bold leading-none text-blue-800 opacity-80 mix-blend-multiply">
-              {number}
+            {photo.location} — {photo.date} — Jimmy Wingert
+          </span>
+        </div>
+
+        {/* Right side — postcard details */}
+        <div className="flex-1 h-full flex flex-col justify-between p-5">
+          {/* Top: "EXAMPLE CONTENT" label + stamp */}
+          <div className="flex justify-between items-start">
+            <span className="text-[8px] tracking-[0.12em] uppercase" style={{ color: "var(--muted)" }}>
+              {photo.entryTitle}
             </span>
-          </button>
+            <div className="w-10 h-12 border flex-shrink-0" style={{ borderColor: "#ccc" }} />
+          </div>
 
-          {/* Vertical divider */}
-          <div className="w-px self-stretch my-4" style={{ background: "#ccc" }} />
-
-          {/* Right side — postcard details */}
-          <div className="w-1/2 h-full flex flex-col justify-between p-5 relative">
-            {/* Stamp area */}
-            <div className="flex justify-end">
-              <div className="w-12 h-14 border" style={{ borderColor: "#ccc" }} />
+          {/* Bottom: address lines with handwritten text */}
+          <div className="space-y-0">
+            {/* Line 1 — handwritten location */}
+            <div className="relative py-2 border-b" style={{ borderColor: "#ccc" }}>
+              <span className="font-[family-name:var(--font-handwriting)] text-[20px] leading-none" style={{ color: "var(--fg)" }}>
+                {photo.location}
+              </span>
             </div>
-
-            {/* Rotated metadata text */}
-            <div
-              className="absolute left-3 top-1/2 -translate-y-1/2 -rotate-90 origin-center whitespace-nowrap text-[9px] tracking-[0.15em] uppercase"
-              style={{ color: "var(--muted)" }}
-            >
-              {photo.location} — {photo.date} — Jimmy Wingert
+            {/* Line 2 — handwritten title */}
+            <div className="relative py-2 border-b" style={{ borderColor: "#ccc" }}>
+              <span className="font-[family-name:var(--font-handwriting)] text-[16px] leading-none" style={{ color: "var(--fg)", opacity: 0.6 }}>
+                {photo.title} — {photo.date}
+              </span>
             </div>
+            {/* Line 3 — empty */}
+            <div className="py-2 border-b" style={{ borderColor: "#ccc" }} />
+            {/* Line 4 — empty */}
+            <div className="py-2 border-b" style={{ borderColor: "#ccc" }} />
 
-            {/* Address lines area with handwritten note */}
-            <div className="mt-auto pl-8">
-              {/* Handwritten location & note */}
-              <div className="font-[family-name:var(--font-handwriting)] mb-1">
-                {photo.location && (
-                  <p className="text-[22px] leading-snug" style={{ color: "var(--fg)" }}>
-                    {photo.location}
-                  </p>
-                )}
-                {photo.title && (
-                  <p className="text-[18px] leading-snug" style={{ color: "var(--fg)", opacity: 0.7 }}>
-                    {photo.title} — {photo.date}
-                  </p>
-                )}
-              </div>
-
-              {/* Address lines underneath */}
-              <div className="space-y-2 pt-3">
-                <hr style={{ borderColor: "#ccc" }} />
-                <hr style={{ borderColor: "#ccc" }} />
-                <hr style={{ borderColor: "#ccc" }} />
-              </div>
-              <p className="text-[10px] tracking-wide mt-2" style={{ color: "var(--muted)" }}>
-                {number} / {total}
-              </p>
-            </div>
+            <p className="text-[9px] tracking-wide mt-2" style={{ color: "var(--muted)" }}>
+              {number} / {total}
+            </p>
           </div>
         </div>
       </div>

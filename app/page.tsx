@@ -11,7 +11,6 @@ export default function Home() {
   const entries = getEntries();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  // Flatten all photos into a single array for postcard navigation
   const allPhotos: (Photo & { entryTitle: string; number: number })[] = useMemo(() => {
     let num = 1;
     return entries.flatMap((entry) =>
@@ -24,25 +23,31 @@ export default function Home() {
   }, [entries]);
 
   return (
-    <main>
-      {/* Title card */}
-      <TitleCard totalPhotos={allPhotos.length} />
+    <>
+      {/* Fixed frame overlay */}
+      <div className="site-frame" />
 
-      {/* Postcards */}
-      {allPhotos.map((photo, index) => (
-        <Postcard
-          key={index}
-          photo={photo}
-          number={photo.number}
-          total={allPhotos.length}
-          onPhotoClick={() => setLightboxIndex(index)}
-        />
-      ))}
+      {/* Fixed site name — top center, above frame */}
+      <p className="fixed top-3 left-0 right-0 text-center text-[13px] tracking-wide z-50" style={{ color: "var(--muted)" }}>
+        Jimmy Wingert
+      </p>
 
-      {/* Footer */}
-      <FooterCard />
+      <main>
+        <TitleCard totalPhotos={allPhotos.length} />
 
-      {/* Lightbox */}
+        {allPhotos.map((photo, index) => (
+          <Postcard
+            key={index}
+            photo={photo}
+            number={photo.number}
+            total={allPhotos.length}
+            onPhotoClick={() => setLightboxIndex(index)}
+          />
+        ))}
+
+        <FooterCard />
+      </main>
+
       {lightboxIndex !== null && (
         <Lightbox
           photos={allPhotos}
@@ -51,6 +56,6 @@ export default function Home() {
           onChange={setLightboxIndex}
         />
       )}
-    </main>
+    </>
   );
 }
