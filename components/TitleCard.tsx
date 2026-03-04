@@ -19,7 +19,10 @@ export function TitleCard({ totalPhotos }: TitleCardProps) {
         <div className="w-48 mt-6">
           <hr className="border-t" style={{ borderColor: "var(--border)" }} />
           <p className="text-[11px] tracking-[0.15em] uppercase text-center mt-3" style={{ color: "var(--fg)" }}>
-            Jimmy Wingert — New York City
+            Jimmy Wingert
+          </p>
+          <p className="text-[11px] tracking-[0.15em] uppercase text-center mt-1" style={{ color: "var(--muted)" }}>
+            Based out of New York City
           </p>
         </div>
       </div>
