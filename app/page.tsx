@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { getEntries, Photo } from "@/lib/entries";
 import { Postcard } from "@/components/Postcard";
 import { TitleCard } from "@/components/TitleCard";
@@ -10,6 +10,13 @@ import { Lightbox } from "@/components/Lightbox";
 export default function Home() {
   const entries = getEntries();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [showTop, setShowTop] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > window.innerHeight * 0.5);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const allPhotos: (Photo & { entryTitle: string; number: number })[] = useMemo(() => {
     let num = 1;
@@ -55,6 +62,18 @@ export default function Home() {
           onClose={() => setLightboxIndex(null)}
           onChange={setLightboxIndex}
         />
+      )}
+
+      {/* Back to top */}
+      {showTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-6 right-6 z-50 w-9 h-9 flex items-center justify-center rounded-full cursor-pointer transition-opacity duration-300 hover:opacity-70"
+          style={{ background: "var(--fg)", color: "var(--card-bg)" }}
+          aria-label="Scroll to top"
+        >
+          ↑
+        </button>
       )}
     </>
   );

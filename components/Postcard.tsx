@@ -19,14 +19,13 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
         className="relative flex flex-col md:flex-row"
         style={{
           background: "var(--card-bg)",
-          width: "min(90vw, 1000px)",
-          aspectRatio: undefined,
+          width: "min(92vw, 1100px)",
         }}
       >
         {/* Photo */}
         <button
           onClick={onPhotoClick}
-          className="relative cursor-zoom-in overflow-hidden group w-full md:w-[55%] aspect-[4/3] md:aspect-[3/2]"
+          className="relative cursor-zoom-in overflow-hidden group w-full md:w-[55%] aspect-[3/2] shrink-0"
           aria-label={`View ${photo.title || photo.alt} full size`}
         >
           <Image
@@ -54,7 +53,7 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
         </div>
 
         {/* Right side / Bottom — postcard details */}
-        <div className="flex-1 flex flex-col justify-center items-center relative px-5 py-6 md:px-6 md:py-0">
+        <div className="md:flex-1 flex flex-col justify-center items-center relative px-5 py-5 md:px-6 md:py-0">
           {/* Stamp — top right */}
           <div className="absolute top-3 right-3 md:top-4 md:right-4">
             {stamp ? (
@@ -116,7 +115,7 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
 
           {/* Counter */}
           <p
-            className="absolute bottom-3 left-5 md:bottom-4 md:left-6 text-[8px] tracking-wide"
+            className="md:absolute md:bottom-4 md:left-6 text-[8px] tracking-wide mt-4 md:mt-0 self-start md:self-auto"
             style={{ color: "#bbb" }}
           >
             {number} / {total}
