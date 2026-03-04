@@ -5,7 +5,7 @@ export function FooterCard() {
 
   return (
     <section className="snap-section" style={{ background: "var(--bg)" }}>
-      <div className="w-full max-w-[900px] mx-auto px-[calc(var(--frame-inset)+16px)] py-12 text-center md:text-left">
+      <div className="w-full max-w-[900px] mx-auto px-[calc(var(--frame-inset)+24px)] py-12 text-center md:text-left">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* Column 1 — Info */}
           <div className="space-y-4">
@@ -16,12 +16,12 @@ export function FooterCard() {
             </div>
             <div className="text-[12px] leading-relaxed space-y-1 pt-2" style={{ color: "var(--muted)" }}>
               <p>
-                <a href="mailto:[email]" className="underline underline-offset-2 hover:text-[var(--fg)] transition-colors">
+                <a href="mailto:jamespwingert@gmail.com" className="underline underline-offset-2 hover:text-[var(--fg)] transition-colors">
                   Email
                 </a>
               </p>
               <p>
-                <a href="https://instagram.com" className="underline underline-offset-2 hover:text-[var(--fg)] transition-colors">
+                <a href="https://instagram.com/jimmy_wingert" className="underline underline-offset-2 hover:text-[var(--fg)] transition-colors">
                   Instagram
                 </a>
               </p>
