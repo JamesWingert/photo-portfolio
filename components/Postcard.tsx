@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Photo } from "@/lib/entries";
+import { getStampForPhoto } from "@/lib/stamps";
 
 interface PostcardProps {
   photo: Photo & { entryTitle: string; number: number };
@@ -9,6 +10,8 @@ interface PostcardProps {
 }
 
 export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) {
+  const stamp = getStampForPhoto(photo.stampPool, number);
+
   return (
     <section className="snap-section" style={{ background: "var(--bg)" }}>
       <div
@@ -53,7 +56,23 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
         <div className="flex-1 h-full flex flex-col justify-center items-center relative px-6">
           {/* Stamp — top right corner */}
           <div className="absolute top-4 right-4">
-            <div className="w-11 h-13 border" style={{ borderColor: "#bbb" }} />
+            {stamp ? (
+              <div
+                className="w-12 h-14 overflow-visible relative"
+                style={{
+                  transform: `rotate(${stamp.rotation}deg) translate(${stamp.offsetX}px, ${stamp.offsetY}px)`,
+                }}
+              >
+                <img
+                  src={stamp.src}
+                  alt="Postage stamp"
+                  className="w-full h-full object-cover"
+                  style={{ filter: "drop-shadow(1px 1px 1px rgba(0,0,0,0.1))" }}
+                />
+              </div>
+            ) : (
+              <div className="w-11 h-13 border" style={{ borderColor: "#bbb" }} />
+            )}
           </div>
 
           {/* Series label — top left */}

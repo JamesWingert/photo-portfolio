@@ -5,6 +5,7 @@ export interface Photo {
   date?: string;
   location?: string;
   description?: string;
+  stampPool?: string;
 }
 
 export interface Entry {
@@ -29,6 +30,7 @@ export function getEntries(): Entry[] {
           date: "March 2026",
           location: "Manhattan, NY",
           description: "Dragon dance procession through Mott Street during Lunar New Year celebrations.",
+          stampPool: "nyc",
         },
         {
           src: "/photos/lunar-new-year-26/DSCF1134-web.jpg",
@@ -37,6 +39,7 @@ export function getEntries(): Entry[] {
           date: "March 2026",
           location: "Manhattan, NY",
           description: "Paper lanterns strung across the narrow streets of Chinatown.",
+          stampPool: "nyc",
         },
         {
           src: "/photos/lunar-new-year-26/DSCF1193.jpg",
@@ -45,6 +48,7 @@ export function getEntries(): Entry[] {
           date: "March 2026",
           location: "Manhattan, NY",
           description: "Community gathering on Canal Street for the new year festivities.",
+          stampPool: "nyc",
         },
         {
           src: "/photos/lunar-new-year-26/DSCF1259.jpg",
@@ -53,6 +57,7 @@ export function getEntries(): Entry[] {
           date: "March 2026",
           location: "Manhattan, NY",
           description: "Traditional red and gold decorations adorning storefronts.",
+          stampPool: "nyc",
         },
       ],
       summary: "Lunar New Year celebrations in Manhattan's Chinatown.",
