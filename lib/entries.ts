@@ -8,14 +8,10 @@ export interface Entry {
   title: string;
   date: string;
   photos: Photo[];
-  summary?: string;
-  accentColor?: string;
 }
 
-// Placeholder entries for initial build
 export function getEntries(): Entry[] {
   return [
-    // REAL ENTRY - Your Lunar New Year photos
     {
       id: "entry-1772581115877-0",
       title: "Chinatown Celebrates Lunar New Year",
@@ -26,10 +22,7 @@ export function getEntries(): Entry[] {
         { src: "/photos/lunar-new-year-26/DSCF1193 2.jpg", alt: "Lunar New Year 3" },
         { src: "/photos/lunar-new-year-26/DSCF1259-Topaz-Gigapixel-2X 2.jpg", alt: "Lunar New Year 4" },
       ],
-      summary: "Lunar New Year celebrations in Manhattan's Chinatown. A study of color, tradition, and community gathering as the city welcomes the new year.",
-      accentColor: "#E8D5C4",
     },
-    // Placeholder entries
     {
       id: "entry-1",
       title: "Late afternoon light through apartment windows",
@@ -40,8 +33,6 @@ export function getEntries(): Entry[] {
         { src: "/photos/placeholder-3.svg", alt: "Window light study 3" },
         { src: "/photos/placeholder-4.svg", alt: "Window light study 4" },
       ],
-      summary: "A series exploring how natural light transforms ordinary spaces throughout the day. Shot on Fuji X-M5.",
-      accentColor: "#E8D5C4",
     },
     {
       id: "entry-2",
@@ -53,8 +44,6 @@ export function getEntries(): Entry[] {
         { src: "/photos/placeholder-7.svg", alt: "Chinatown morning 3" },
         { src: "/photos/placeholder-8.svg", alt: "Chinatown morning 4" },
       ],
-      summary: "Quiet moments in Manhattan's Chinatown before the streets fill with activity.",
-      accentColor: "#D4C4B0",
     },
   ];
 }

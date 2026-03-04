@@ -6,29 +6,22 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="px-6 py-8 md:px-12 md:py-12">
-        <h1 className="text-sm tracking-wide text-gray-900">
+      {/* Fixed top-left header — Cargo style */}
+      <header className="px-5 pt-6 pb-2">
+        <p className="text-[13px] leading-tight text-neutral-800 tracking-normal">
           Jimmy Wingert
-        </h1>
-        <p className="mt-1 text-xs text-gray-500">
+        </p>
+        <p className="text-[13px] leading-tight text-neutral-400 tracking-normal">
           Photography
         </p>
       </header>
 
       {/* Entries */}
-      <div className="space-y-24 pb-24">
+      <div className="mt-6">
         {entries.map((entry) => (
           <PhotoEntry key={entry.id} entry={entry} />
         ))}
       </div>
-
-      {/* Footer */}
-      <footer className="px-6 py-12 md:px-12 border-t border-gray-100">
-        <p className="text-xs text-gray-400">
-          © {new Date().getFullYear()} Jimmy Wingert
-        </p>
-      </footer>
     </main>
   );
 }
