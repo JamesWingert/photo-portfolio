@@ -11,7 +11,6 @@ interface PostcardProps {
 export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) {
   return (
     <section className="snap-section" style={{ background: "var(--bg)" }}>
-      {/* White postcard — bigger, fills more of the viewport */}
       <div
         className="relative flex"
         style={{
@@ -20,7 +19,7 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
           aspectRatio: "3 / 2",
         }}
       >
-        {/* Left side — photo (takes ~55% for more image) */}
+        {/* Left side — photo */}
         <button
           onClick={onPhotoClick}
           className="relative h-full cursor-zoom-in overflow-hidden group"
@@ -35,19 +34,15 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
             sizes="(max-width: 768px) 80vw, 44vw"
             quality={80}
           />
-          {/* Number overlay */}
-          <span className="absolute bottom-3 left-4 text-[clamp(2.5rem,5vw,4.5rem)] font-bold leading-none text-blue-800 opacity-80 mix-blend-multiply">
-            {number}
-          </span>
         </button>
 
-        {/* Vertical divider — right next to the photo */}
+        {/* Vertical divider */}
         <div className="w-px self-stretch" style={{ background: "#ccc" }} />
 
-        {/* Rotated metadata text — tight to the divider */}
-        <div className="relative" style={{ width: "20px" }}>
+        {/* Rotated metadata — tight to divider */}
+        <div className="relative" style={{ width: "18px" }}>
           <span
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[8px] tracking-[0.12em] uppercase"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-90 whitespace-nowrap text-[7px] tracking-[0.12em] uppercase"
             style={{ color: "var(--muted)" }}
           >
             {photo.location} — {photo.date} — Jimmy Wingert
@@ -55,39 +50,50 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
         </div>
 
         {/* Right side — postcard details */}
-        <div className="flex-1 h-full flex flex-col p-5 relative">
-          {/* Stamp — top right with proper inset */}
-          <div className="flex justify-end">
-            <div className="w-10 h-12 border" style={{ borderColor: "#ccc" }} />
+        <div className="flex-1 h-full flex flex-col justify-center items-center relative px-6">
+          {/* Stamp — top right corner */}
+          <div className="absolute top-4 right-4">
+            <div className="w-11 h-13 border" style={{ borderColor: "#bbb" }} />
           </div>
 
-          {/* Series label — below stamp */}
-          <span className="text-[8px] tracking-[0.12em] uppercase mt-2" style={{ color: "var(--muted)" }}>
+          {/* Series label — top left */}
+          <span
+            className="absolute top-4 left-6 text-[7px] tracking-[0.15em] uppercase"
+            style={{ color: "#bbb" }}
+          >
             {photo.entryTitle}
           </span>
 
-          {/* Centered address lines */}
-          <div className="flex-1 flex flex-col justify-center">
-            {/* Line 1 — handwritten location */}
-            <div className="relative py-2 border-b" style={{ borderColor: "#ccc" }}>
-              <span className="font-[family-name:var(--font-handwriting)] text-[20px] leading-none" style={{ color: "var(--fg)" }}>
+          {/* Centered content block */}
+          <div className="w-full max-w-[85%]">
+            {/* Handwritten location */}
+            <div className="border-b pb-2 mb-1" style={{ borderColor: "#ccc" }}>
+              <span
+                className="font-[family-name:var(--font-handwriting)] text-[24px] leading-none"
+                style={{ color: "var(--fg)" }}
+              >
                 {photo.location}
               </span>
             </div>
-            {/* Line 2 — handwritten title */}
-            <div className="relative py-2 border-b" style={{ borderColor: "#ccc" }}>
-              <span className="font-[family-name:var(--font-handwriting)] text-[16px] leading-none" style={{ color: "var(--fg)", opacity: 0.6 }}>
+            {/* Handwritten title + date */}
+            <div className="border-b pb-2 mb-1" style={{ borderColor: "#ccc" }}>
+              <span
+                className="font-[family-name:var(--font-handwriting)] text-[18px] leading-none"
+                style={{ color: "var(--fg)", opacity: 0.55 }}
+              >
                 {photo.title} — {photo.date}
               </span>
             </div>
-            {/* Line 3 — empty */}
-            <div className="py-2 border-b" style={{ borderColor: "#ccc" }} />
-            {/* Line 4 — empty */}
-            <div className="py-2 border-b" style={{ borderColor: "#ccc" }} />
+            {/* Empty lines */}
+            <div className="border-b py-2" style={{ borderColor: "#ccc" }} />
+            <div className="border-b py-2" style={{ borderColor: "#ccc" }} />
           </div>
 
-          {/* Counter at bottom */}
-          <p className="text-[9px] tracking-wide mt-2" style={{ color: "var(--muted)" }}>
+          {/* Counter — bottom */}
+          <p
+            className="absolute bottom-4 left-6 text-[8px] tracking-wide"
+            style={{ color: "#bbb" }}
+          >
             {number} / {total}
           </p>
         </div>
