@@ -5,20 +5,20 @@ interface TitleCardProps {
 export function TitleCard({ totalPhotos }: TitleCardProps) {
   return (
     <section className="snap-section" style={{ background: "var(--bg)" }}>
-      <div className="text-center px-8">
-        <h1 className="text-[clamp(2.5rem,8vw,7rem)] font-black leading-[0.95] tracking-tight uppercase">
+      <div className="flex flex-col items-center px-8">
+        <h1 className="text-[clamp(2.5rem,7vw,6rem)] font-black leading-[1] tracking-tight uppercase text-center">
           Photography
         </h1>
-        <h2 className="text-[clamp(2.5rem,8vw,7rem)] font-black leading-[0.95] tracking-tight uppercase">
+        <h2 className="text-[clamp(2.5rem,7vw,6rem)] font-black leading-[1] tracking-tight uppercase text-center">
           {totalPhotos} Postcards
         </h2>
-        <h3 className="text-[clamp(2rem,6vw,5.5rem)] font-black leading-[0.95] tracking-tight uppercase mt-2">
+        <h3 className="text-[clamp(1.8rem,5vw,4rem)] font-black leading-[1] tracking-tight uppercase text-center mt-1">
           2024–2026
         </h3>
 
-        <div className="mt-10 max-w-md mx-auto">
+        <div className="w-48 mt-6">
           <hr className="border-t" style={{ borderColor: "var(--border)" }} />
-          <p className="text-[13px] tracking-[0.15em] uppercase text-center mt-4" style={{ color: "var(--fg)" }}>
+          <p className="text-[11px] tracking-[0.15em] uppercase text-center mt-3" style={{ color: "var(--fg)" }}>
             Jimmy Wingert — New York City
           </p>
         </div>
