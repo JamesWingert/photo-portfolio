@@ -25,7 +25,7 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
         {/* Photo */}
         <button
           onClick={onPhotoClick}
-          className="relative cursor-zoom-in overflow-hidden group w-full md:w-[55%] aspect-[3/2] shrink-0"
+          className="relative cursor-zoom-in overflow-hidden group w-full md:w-[55%] aspect-[4/3] md:aspect-[4/3] shrink-0"
           aria-label={`View ${photo.title || photo.alt} full size`}
         >
           <Image
@@ -53,38 +53,38 @@ export function Postcard({ photo, number, total, onPhotoClick }: PostcardProps) 
         </div>
 
         {/* Right side / Bottom — postcard details */}
-        <div className="md:flex-1 flex flex-col justify-center items-center relative px-5 py-5 md:px-6 md:py-0">
-          {/* Stamp — top right */}
-          <div className="absolute top-3 right-3 md:top-4 md:right-4">
-            {stamp ? (
-              <div
-                className="w-10 h-12 md:w-16 md:h-20 overflow-visible relative"
-                style={{
-                  transform: `rotate(${stamp.rotation}deg) translate(${stamp.offsetX}px, ${stamp.offsetY}px)`,
-                }}
-              >
-                <img
-                  src={stamp.src}
-                  alt="Postage stamp"
-                  className="w-full h-full object-cover"
-                  style={{ filter: "drop-shadow(1px 1px 1px rgba(0,0,0,0.1))" }}
-                />
-              </div>
-            ) : (
-              <div className="w-10 h-12 md:w-11 md:h-13 border" style={{ borderColor: "#bbb" }} />
-            )}
+        <div className="md:flex-1 flex flex-col items-center relative px-5 py-4 md:px-6 md:py-0 md:justify-center">
+          {/* Top row on mobile: series label + stamp side by side; absolute on desktop */}
+          <div className="flex w-full justify-between items-start md:contents mb-3 md:mb-0">
+            <span
+              className="md:absolute md:top-4 md:left-6 text-[7px] tracking-[0.15em] uppercase"
+              style={{ color: "#bbb" }}
+            >
+              {photo.entryTitle}
+            </span>
+            <div className="md:absolute md:top-4 md:right-4">
+              {stamp ? (
+                <div
+                  className="w-10 h-12 md:w-16 md:h-20 overflow-visible relative"
+                  style={{
+                    transform: `rotate(${stamp.rotation}deg) translate(${stamp.offsetX}px, ${stamp.offsetY}px)`,
+                  }}
+                >
+                  <img
+                    src={stamp.src}
+                    alt="Postage stamp"
+                    className="w-full h-full object-cover"
+                    style={{ filter: "drop-shadow(1px 1px 1px rgba(0,0,0,0.1))" }}
+                  />
+                </div>
+              ) : (
+                <div className="w-10 h-12 md:w-11 md:h-13 border" style={{ borderColor: "#bbb" }} />
+              )}
+            </div>
           </div>
 
-          {/* Series label — top left */}
-          <span
-            className="absolute top-3 left-5 md:top-4 md:left-6 text-[7px] tracking-[0.15em] uppercase"
-            style={{ color: "#bbb" }}
-          >
-            {photo.entryTitle}
-          </span>
-
           {/* Centered content block */}
-          <div className="w-full max-w-[85%] mt-6 md:mt-0">
+          <div className="w-full max-w-[85%] md:mt-0">
             <div className="border-b pb-2 mb-1" style={{ borderColor: "#ccc" }}>
               <span
                 className="font-[family-name:var(--font-handwriting)] text-[18px] md:text-[24px] leading-none"
